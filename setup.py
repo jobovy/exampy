@@ -6,5 +6,6 @@ setuptools.setup(
     author="Jo Bovy",
     author_email="bovy@astro.utoronto.ca",
     description="A small example Python package",
-    packages=["exampy","exampy/integrate"]
+    packages=["exampy","exampy/integrate"],
+    install_requires=["numpy"]
 )
