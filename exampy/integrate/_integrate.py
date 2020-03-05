@@ -14,8 +14,8 @@ b: float
 n: int, optional
     Number of intervals to split [a,b] into for the Riemann sum
 
-Returns:
---------
+Returns
+-------
 float
     Integral of func(x) over [a,b]
 """
