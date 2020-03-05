@@ -1,9 +1,9 @@
 # Tests of the basic math functions available in exampy's top level
+import math
+import exampy
 
 def test_square_direct():
     # Direct test that the square works based on known solutions
-    import math
-    import exampy
     tol = 1e-10
     assert math.fabs(exampy.square(1.)-1.) < tol, \
         "exampy.square does not agree with known solution"
@@ -12,3 +12,16 @@ def test_square_direct():
     assert math.fabs(exampy.square(3.)-9.) < tol, \
         "exampy.square does not agree with known solution"
     return None
+
+def test_cube_oddfunction():
+    # Test of the cube function by checking that it is an odd function
+    tol= 1e-10
+    assert math.fabs(exampy.cube(1.)+exampy.cube(-1.)) < tol, \
+        "exampy.cube is not an odd function"
+    assert math.fabs(exampy.cube(2.)+exampy.cube(-2.)) < tol, \
+        "exampy.cube is not an odd function"
+    assert math.fabs(exampy.cube(3.)+exampy.cube(-3.)) < tol, \
+        "exampy.cube is not an odd function"
+    return None
+
+     
