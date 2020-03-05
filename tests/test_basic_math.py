@@ -9,6 +9,6 @@ def test_square_direct():
         "exampy.square does not agree with known solution"
     assert math.fabs(exampy.square(2.)-4.) < tol, \
         "exampy.square does not agree with known solution"
-    assert math.fabs(exampy.square(3.)-10.) < tol, \
+    assert math.fabs(exampy.square(3.)-9.) < tol, \
         "exampy.square does not agree with known solution"
     return None
