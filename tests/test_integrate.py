@@ -1,4 +1,5 @@
 # Tests of the integration routines in exampy.integrate
+import pytest
 import numpy as np
 import exampy.integrate
 
@@ -37,3 +38,16 @@ def test_simps_typerror():
     with pytest.raises(TypeError,match="Provided func needs to be callable on arrays of inputs") as excinfo:
         out= exampy.integrate.simps(lambda x: math.exp(x),0,1)
     return None
+
+@pytest.mark.xfail
+def test_simps_scalarfunc():
+    # Test that exampy.integrate.simps works even when called with a 
+    # non-array function
+    import math
+    tol= 1e-7
+    assert np.fabs(exampy.integrate.simps(lambda x: math.exp(x),0,1)
+                   -(math.e-1.)) < tol, \
+                   """exampy.integrate.simps does not work for scalar-input"""\
+                   """functions"""
+    return None
+    
