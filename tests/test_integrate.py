@@ -29,4 +29,11 @@ def test_simps_against_scipy():
                    """scipy.integrate.quad for a complicated function"""
     return None
 
-    
+def test_simps_typerror():
+    # Test that exampy.integrate.simps properly raises a TypeError
+    # when called with a non-array function
+    import math
+    import pytest
+    with pytest.raises(TypeError):
+        out= exampy.integrate.simps(lambda x: math.exp(x),0,1)
+    return None
