@@ -54,7 +54,10 @@ See Also
 --------
 exampy.integrate.riemann: Integrate a function with a simple Riemann sum
 """
-    return (2.*np.sum(func(np.linspace(a,b,n+1)))
-            -func(a)-func(b) # adjust double-counted first and last
-            +4.*np.sum(func(np.linspace(a+(b-a)/n/2,b-(b-a)/n/2,n))))\
-            *(b-a)/n/6.
+    try:
+        return (2.*np.sum(func(np.linspace(a,b,n+1)))
+                -func(a)-func(b) # adjust double-counted first and last
+                +4.*np.sum(func(np.linspace(a+(b-a)/n/2,b-(b-a)/n/2,n))))\
+                *(b-a)/n/6.
+    except TypeError:
+        raise TypeError("Provided func needs to be callable on arrays of inputs")
