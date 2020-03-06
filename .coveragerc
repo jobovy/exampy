@@ -15,10 +15,6 @@ exclude_lines =
     if 0:
     if __name__ == .__main__.:
 
-omit = 
-    exampy/__init__.py
-    exampy/integrate/*
-
 ignore_errors = True
 
 [html]
