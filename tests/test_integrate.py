@@ -39,7 +39,7 @@ def test_simps_typerror():
         out= exampy.integrate.simps(lambda x: math.exp(x),0,1)
     return None
 
-@pytest.mark.xfail
+@pytest.mark.xfail(strict=True,raises=TypeError)
 def test_simps_scalarfunc():
     # Test that exampy.integrate.simps works even when called with a 
     # non-array function
