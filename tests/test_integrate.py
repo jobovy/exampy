@@ -34,7 +34,6 @@ def test_simps_typerror():
     # when called with a non-array function
     import math
     import pytest
-    with pytest.raises(TypeError) as excinfo:
+    with pytest.raises(TypeError,match="Provided func needs to be callable on arrays of inputs") as excinfo:
         out= exampy.integrate.simps(lambda x: math.exp(x),0,1)
-    assert str(excinfo.value) == "Provided func needs to be callable on arrays of inputs"
     return None
