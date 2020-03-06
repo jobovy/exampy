@@ -18,3 +18,5 @@ API reference
 
 .. autofunction:: exampy.integrate.riemann
 
+.. autofunction:: exampy.integrate.simps
+
