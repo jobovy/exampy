@@ -5,6 +5,7 @@ python:
 
 env:
   - NUMPY_VERSION=1.18
+    SCIPY_VERSION=1.4
 
 before_install:
   - pip install numpy==$NUMPY_VERSION
@@ -15,7 +16,7 @@ install:
 before_script:
   - pip	install	pytest
   - pip	install	pytest-cov
-  - pip install scipy
+  - pip install scipy==$SCIPY_VERSION
 
 script:
   - pytest -v tests/ --cov=exampy/
