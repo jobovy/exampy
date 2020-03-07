@@ -6,3 +6,5 @@ python:
 install:
   - python setup.py develop
 
+script:
+  - echo 0
