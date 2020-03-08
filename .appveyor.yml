@@ -1,7 +1,7 @@
 build: off
 
 environment:
-  - PYTHON: "C:\\Python37"
+  PYTHON: "C:\\Python37"
   
 install:
   - "%PYTHON%\\python.exe -m pip install pytest"
