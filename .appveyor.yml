@@ -1,14 +1,41 @@
 build: off
 
 environment:
-  PYTHON: "C:\\Python37"
+  MINICONDA: C:\\Miniconda37-x64
+
+  matrix:
+    - PYTHON_VERSION: 3.8
+      NUMPY_VERSION: 1.18.1
+
+    - PYTHON_VERSION: 3.8
+      NUMPY_VERSION: 1.17.4
+
+    - PYTHON_VERSION: 3.8
+      NUMPY_VERSION: 1.16.6
+
+    - PYTHON_VERSION: 3.7
+      NUMPY_VERSION: 1.18.1
+
+    - PYTHON_VERSION: 3.7
+      NUMPY_VERSION: 1.17.4
+
+    - PYTHON_VERSION: 3.7
+      NUMPY_VERSION: 1.16.6
+
   
 install:
-  - ps: $env:PATH="$env:PATH;$env:PYTHON\\Scripts"
-  - "%PYTHON%\\python.exe -m pip install pytest"
-  - "%PYTHON%\\python.exe -m pip install pytest-cov"
-  - "%PYTHON%\\python.exe -m pip install scipy"
-  - "%PYTHON%\\python.exe setup.py develop"
+  - cmd: call %MINICONDA%\Scripts\activate.bat
+  - cmd: conda.exe update --yes --quiet conda
+  - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
+  - conda config --set always_yes yes --set changeps1 no
+  - conda info -a
+  - "conda create -n test-environment python=%PYTHON_VERSION% numpy==%NUMPY_VERSION% scipy"
+  - activate test-environment
+  - python setup.py develop"
+
+before_test:
+  - pip install pytest
+  - pip install pytest-cov
   
 test_script:
   - pytest -v tests/ --cov=exampy/
