@@ -29,3 +29,10 @@ before_script:
 
 script:
   - pytest -v tests/ --cov=exampy/
+
+notifications:
+  email:
+    recipients:
+      - bovy@astro.utoronto.ca
+    on_success: change
+    on_failure: change
