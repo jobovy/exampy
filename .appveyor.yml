@@ -4,7 +4,7 @@ environment:
   PYTHON: "C:\\Python37"
   
 install:
-  - $env:PATH="$env:%PYTHON%\\Scripts"
+  - $env:PATH="$env;%PYTHON%\\Scripts"
   - "%PYTHON%\\python.exe -m pip install pytest"
   - "%PYTHON%\\python.exe -m pip install pytest-cov"
   - "%PYTHON%\\python.exe -m pip install scipy"
