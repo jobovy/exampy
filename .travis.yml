@@ -1,11 +1,13 @@
 language: python
 
 python:
+  - "3.8"
   - "3.7"
 
 env:
   - NUMPY_VERSION=1.18
-    SCIPY_VERSION=1.4
+  - NUMPY_VERSION=1.17
+  - NUMPY_VERSION=1.16
 
 before_install:
   - pip install numpy==$NUMPY_VERSION
@@ -16,7 +18,7 @@ install:
 before_script:
   - pip	install	pytest
   - pip	install	pytest-cov
-  - pip install scipy==$SCIPY_VERSION
+  - pip install scipy
 
 script:
   - pytest -v tests/ --cov=exampy/
