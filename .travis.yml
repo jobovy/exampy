@@ -16,6 +16,7 @@ before_install:
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update conda
+  - conda config --add channels anaconda
   - conda config --add channels conda-forge
   - conda create -n test-environment python=$TRAVIS_PYTHON_VERSION "numpy==$NUMPY_VERSION" scipy pip pytest
   - source activate test-environment
