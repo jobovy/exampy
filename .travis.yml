@@ -10,15 +10,21 @@ env:
   - NUMPY_VERSION=1.16
 
 before_install:
-  - pip install numpy==$NUMPY_VERSION
+  - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update conda
+  - conda config --add channels conda-forge
+  - conda create -n test-environment python=$TRAVIS_PYTHON_VERSION "numpy==$NUMPY_VERSION" scipy pip pytest
+  - source activate test-environment
 
 install:
   - python setup.py develop
 
 before_script:
-  - pip	install	pytest
   - pip	install	pytest-cov
-  - pip install scipy
 
 script:
   - pytest -v tests/ --cov=exampy/
