@@ -5,7 +5,7 @@ python:
   - "3.7"
 
 env:
-  - NUMPY_VERSION=1.18
+  - NUMPY_VERSION=1.18.1
   - NUMPY_VERSION=1.17
   - NUMPY_VERSION=1.16
 
@@ -16,15 +16,15 @@ before_install:
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update conda
-  - conda config --add channels anaconda
   - conda config --add channels conda-forge
-  - conda create -n test-environment python=$TRAVIS_PYTHON_VERSION "numpy==$NUMPY_VERSION" scipy pip pytest
+  - conda create -n test-environment python=$TRAVIS_PYTHON_VERSION "numpy==$NUMPY_VERSION" scipy pip
   - source activate test-environment
 
 install:
   - python setup.py develop
 
 before_script:
+  - pip	install	pytest
   - pip	install	pytest-cov
 
 script:
