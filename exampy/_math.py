@@ -58,7 +58,7 @@ References
    general form," J. Basic Math., vol. 2, pp. 2-3, 1864.
 
 """
-    return x**3
+    return x**3.
 
 class Pow(object):
     """A class to compute the power of a number"""
