@@ -6,22 +6,27 @@ environment:
   matrix:
     - PYTHON_VERSION: 3.8
       NUMPY_VERSION: 1.18.1
+      BUILD_ARTIFACT: "true"
 
     - PYTHON_VERSION: 3.8
       NUMPY_VERSION: 1.17.4
+      BUILD_ARTIFACT: "false"
 
     - PYTHON_VERSION: 3.8
       NUMPY_VERSION: 1.16.6
+      BUILD_ARTIFACT: "false"
 
     - PYTHON_VERSION: 3.7
       NUMPY_VERSION: 1.18.1
+      BUILD_ARTIFACT: "false"
 
     - PYTHON_VERSION: 3.7
       NUMPY_VERSION: 1.17.4
+      BUILD_ARTIFACT: "false"
 
     - PYTHON_VERSION: 3.7
       NUMPY_VERSION: 1.16.6
-
+      BUILD_ARTIFACT: "false"
   
 install:
   - cmd: call %MINICONDA%\Scripts\activate.bat
@@ -39,3 +44,11 @@ before_test:
   
 test_script:
   - pytest -v tests/ --cov=exampy/
+
+after_test:
+  - ps: |
+      if ($env:BUILD_ARTIFACT -eq "true") {
+        pip install wheel
+        python setup.py bdist_wheel
+        Get-ChildItem dist\*.whl | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+      }
