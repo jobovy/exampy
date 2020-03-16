@@ -11,7 +11,9 @@ jobs:
         numpy-version: [1.16,1.17,1.18]
         exclude:
           - python-version: 3.8
-            numpy-version: [1.16,1.17]
+            numpy-version: 1.16
+          - python-version: 3.8
+            numpy-version: 1.17
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
