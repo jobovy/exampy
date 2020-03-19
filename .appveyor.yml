@@ -8,14 +8,6 @@ environment:
       NUMPY_VERSION: 1.18.1
       BUILD_ARTIFACT: "true"
 
-    - PYTHON_VERSION: 3.8
-      NUMPY_VERSION: 1.17.4
-      BUILD_ARTIFACT: "false"
-
-    - PYTHON_VERSION: 3.8
-      NUMPY_VERSION: 1.16.6
-      BUILD_ARTIFACT: "false"
-
     - PYTHON_VERSION: 3.7
       NUMPY_VERSION: 1.18.1
       BUILD_ARTIFACT: "false"
