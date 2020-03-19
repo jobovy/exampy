@@ -5,25 +5,19 @@ python:
   - "3.7"
 
 env:
-  - NUMPY_VERSION=1.18.1
-  - NUMPY_VERSION=1.17.4
-  - NUMPY_VERSION=1.16.6
+  - NUMPY_VERSION=1.18
+  - NUMPY_VERSION=1.17
+  - NUMPY_VERSION=1.16
 
 matrix:
-  include:
-    - python: "3.6"
-      env: NUMPY_VERSION=1.18.1
+  exclude:
+    - python: "3.8"
+      env: NUMPY_VERSION=1.17
+    - python: "3.8"
+      env: NUMPY_VERSION=1.16
 
 before_install:
-  - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update conda
-  - conda config --add channels conda-forge
-  - conda create -n test-environment python=$TRAVIS_PYTHON_VERSION "numpy==$NUMPY_VERSION" scipy pip
-  - source activate test-environment
+  - pip install numpy==$NUMPY_VERSION
 
 install:
   - python setup.py develop
@@ -31,16 +25,7 @@ install:
 before_script:
   - pip	install	pytest
   - pip	install	pytest-cov
+  - pip install scipy
 
 script:
   - pytest -v tests/ --cov=exampy/
-
-after_success:
-  - if [[ $TRAVIS_PYTHON_VERSION == 3.8 ]] && [[ $NUMPY_VERSION == 1.18.1 ]]; then bash <(curl -s https://codecov.io/bash); fi
-
-notifications:
-  email:
-    recipients:
-      - bovy@astro.utoronto.ca
-    on_success: change
-    on_failure: change
