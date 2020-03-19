@@ -29,3 +29,13 @@ before_script:
 
 script:
   - pytest -v tests/ --cov=exampy/
+
+after_success:
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.8 ]] && [[ $NUMPY_VERSION == 1.18 ]]; then bash <(curl -s https://codecov.io/bash); fi
+
+notifications:
+  email:
+    recipients:
+      - bovy@astro.utoronto.ca
+    on_success: change
+    on_failure: change
