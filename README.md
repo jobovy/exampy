@@ -18,4 +18,4 @@ Jo Bovy - bovy at astro dot utoronto dot ca
 ## LOOKING FOR HELP?
 
 The latest documentation can be found
-[here](https://exampy.readthedocs.io/en/latest/).
+[here](https://exampy.readthedocs.io/en/latest/), but you really don't want to be using this package, it's just an example!
