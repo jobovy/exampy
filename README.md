@@ -8,4 +8,5 @@ development and packaging.
 ![Test exampy](https://github.com/jobovy/exampy/workflows/Test%20exampy/badge.svg)
 [![codecov](https://codecov.io/gh/jobovy/exampy/branch/master/graph/badge.svg)](https://codecov.io/gh/jobovy/exampy)
 [![Documentation Status](https://readthedocs.org/projects/exampy/badge/?version=latest)](https://exampy.readthedocs.io/en/latest/?badge=latest)
+[![image](http://img.shields.io/pypi/v/exampy.svg)](https://pypi.python.org/pypi/exampy/)
 [![image](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/jobovy/exampy/blob/master/LICENSE)
